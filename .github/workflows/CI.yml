@@ -2,8 +2,8 @@ name: CI
 
 
 on:
-  push:
-  pull_request: [ Nakai ]
+  pull_request: 
+    branches: [ Nakai ]
 
   workflow_dispatch:
 
