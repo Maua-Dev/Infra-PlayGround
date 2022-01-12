@@ -4,12 +4,12 @@ name: CI
 on:
   push:
     branches:
-      branches: [Nakai]
+      branches: Nakai
   pull_request: 
-    branches: [ Nakai ]
+    branches: Nakai
 
   workflow_dispatch:
-    branches: [ Nakai ]
+    branches: Nakai
 
 jobs:
 
