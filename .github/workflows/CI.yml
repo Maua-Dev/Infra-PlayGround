@@ -9,7 +9,6 @@ on:
     branches: Nakai
 
   workflow_dispatch:
-    branches: Nakai
 
 jobs:
 
