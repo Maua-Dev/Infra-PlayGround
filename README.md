@@ -22,6 +22,6 @@ Esse repositório contém um hello world de um back end usando Fast API (framewo
 ### Comando para iniciar o servidor (porta 8000)
 ```uvicorn server:app --reload --host 0.0.0.0```
 
-# OBS: importante que haja o argumento --host 0.0.0.0 para que o app seja acessível de fora do container
+__OBS: importante que haja o argumento --host 0.0.0.0 para que o app seja acessível de fora do container__
   
 A API já deve estar visível em [localhost:8000](http://localhost:8000/)
