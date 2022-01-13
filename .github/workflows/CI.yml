@@ -5,6 +5,7 @@ on:
     branches: [ Nakai ]
   pull_request:
     branches: [ Nakai ]
+
   workflow_dispatch:
 
 jobs:
@@ -12,8 +13,38 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
+    - name: venv
+      run: sudo python -m venv /home/runner/work/Infra-PlayGround/Infra-PlayGround/venv
+
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build -t python-docker .
+
+    - name: Run Container
+      run: docker run --name teste -d -p 8000:8000 python-docker
+
+    - name: Get container running
+      run: docker ps
+    
+    - name: Get container logs
+      run: docker logs teste
+      
+    - name: Sleep
+      run: sleep 5s
+      
+    - name: Check HTTP status of production site
+      id: code
+      run: echo "::set-output name=status::$(curl -o /dev/null -s -w "%{http_code}\n" localhost:8000)"
+    - uses: nick-invision/assert-action@v1
+      with:
+        expected: 200
+        actual:  ${{ steps.code.outputs.status }}
+
+    - name: Check HTTP status of production site
+      id: code1
+      run: echo "::set-output name=status::$(curl -o /dev/null -s -w "%{http_code}\n" localhost:8000/erro)"
+    - uses: nick-invision/assert-action@v1
+      with:
+        expected: 400
+        actual:  ${{ steps.code1.outputs.status }}
