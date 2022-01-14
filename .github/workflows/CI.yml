@@ -26,12 +26,12 @@ jobs:
 
     - name: Get container running
       run: docker ps
-    
-    - name: Get container logs
-      run: docker logs teste
       
     - name: Sleep
       run: sleep 5s
+      
+    - name: Get container logs
+      run: docker logs teste      
       
     - name: Check HTTP status /
       id: code
