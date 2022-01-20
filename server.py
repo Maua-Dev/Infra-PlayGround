@@ -9,4 +9,4 @@ async def root():
 
 @app.get("/erro")
 async def root():
-    raise HTTPException(status_code=401, detail="Erro!")
+    raise HTTPException(status_code=400, detail="Erro!")
