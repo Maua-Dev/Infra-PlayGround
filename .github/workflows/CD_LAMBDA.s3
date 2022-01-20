@@ -1,0 +1,27 @@
+name: CD_lambda
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      # configurar venv
+      run: python -m venv venv
+      run: source /venv/bin/activate 
+      run: pip install -r requirements.txt
+     
+      # zipar libs
+      run: ls venv
+      
+      
+      # zipar server.app
+      # mandar o zip para o s3
+      
+      - name: Run a one-line script
+        run: echo Hello, world!
+
