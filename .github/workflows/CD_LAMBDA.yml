@@ -12,6 +12,7 @@ jobs:
       
       # configurar venv
       - run: python -m venv venv
+      - run: ls
       - run: source /venv/bin/activate 
       - run: pip install -r requirements.txt
      
