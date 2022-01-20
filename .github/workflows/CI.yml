@@ -15,8 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: venv
-      run: sudo python -m venv /home/runner/work/Infra-PlayGround/Infra-PlayGround/venv
 
     - name: Build the Docker image
       run: docker build -t python-docker .
@@ -30,8 +28,12 @@ jobs:
     - name: Sleep
       run: sleep 5s
       
+    - run: curl localhost:8000
+      
     - name: Get container logs
-      run: docker logs teste      
+      run: docker logs teste  
+      
+    - run: curl localhost:8000
       
     - name: Check HTTP status /
       id: code
