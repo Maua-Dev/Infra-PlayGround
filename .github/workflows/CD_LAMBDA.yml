@@ -10,6 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      # setar python para 3.9
       - name: Setup Python
         uses: actions/setup-python@v2.3.1
         with:
@@ -19,10 +20,12 @@ jobs:
       - run: python -m venv venv
       - run: source venv/bin/activate 
       - run: pip install -r requirements.txt
+      - run: pwd
      
-      # zipar libs
+      # zipar as libs
       - run: ls venv/lib
       - run: cd venv/lib/python3.9/site-packages
+      - run: zip -r9 function.zip
       
       
       # zipar server.app
