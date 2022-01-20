@@ -12,8 +12,7 @@ jobs:
       
       # configurar venv
       - run: python -m venv venv
-      - run: ls venv
-      - run: source /venv/bin/activate 
+      - run: source venv/bin/activate 
       - run: pip install -r requirements.txt
      
       # zipar libs
