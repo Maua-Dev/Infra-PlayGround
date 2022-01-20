@@ -5,7 +5,7 @@ on:
 
 jobs:
 
-  build:
+  DeployToAWS:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,8 +16,8 @@ jobs:
       - run: pip install -r requirements.txt
      
       # zipar libs
-      - run: ls env/lib
-      - run: cd env/lib/python3.9/site-packages
+      - run: ls venv/lib
+      - run: cd venv/lib/python3.9/site-packages
       
       
       # zipar server.app
