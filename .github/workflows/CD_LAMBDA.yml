@@ -27,9 +27,9 @@ jobs:
      # ROOT:  ${{ steps.root_directory.outputs.name }}
      
      # jogar o server.py nas libs (para zipar tudo junto)
-      - run: cp -R server.py venv/lib/python3.9/site-packages/.
+      - run: cp -R server.py venv/lib/python3.9/site-packages
       - run: mkdir toZip
-      - run: cp -R venv/lib/python3.9/site-packages toZip
+      - run: cp -R venv/lib/python3.9/site-packages/. toZip
      
       - name: Zip app
         run: zip -r function.zip venv/lib/python3.9/site-packages/.
