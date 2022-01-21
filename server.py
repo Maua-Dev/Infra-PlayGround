@@ -4,7 +4,7 @@ from mangum import Mangum
 app = FastAPI()
 
 
-@app.get("/infra-playground")
+@app.get("/infra-playground/")
 async def root():
     return {"message": "Hello World!!"}
 
