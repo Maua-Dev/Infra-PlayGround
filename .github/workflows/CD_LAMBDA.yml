@@ -28,10 +28,7 @@ jobs:
      
      # jogar o server.py nas libs (para zipar tudo junto)
       - run: cp -R server.py venv/lib/python3.9/site-packages
-      - run: cd venv/lib/python3.9/site-packages
-      - run: zip -r function.zip *
-        
-      - run: mv function.zip ${{ steps.root_directory.outputs.name }}
+      - run: zip -rj function.zip venv/lib/python3.9/site-packages
           
       - run: ls
       - run: ls venv/lib/python3.9/site-packages
