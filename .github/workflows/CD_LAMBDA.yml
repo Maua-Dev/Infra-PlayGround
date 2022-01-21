@@ -18,8 +18,9 @@ jobs:
       
       # configurar venv
       - run: python -m venv venv
-      - run: source venv/bin/activate 
-      - run: pip install -r requirements.txt
+      - run: |
+          source venv/bin/activate; \
+          pip install -r requirements.txt \
       
       - name: Pegar root directory
         id: root_directory
