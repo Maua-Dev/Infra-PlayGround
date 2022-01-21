@@ -24,18 +24,15 @@ jobs:
       - name: Pegar root directory
         id: root_directory
         run: echo "::set-output name=name::$(pwd)"
-     
-      - run: echo ${{ steps.root_directory.outputs.name }}
+     # ROOT:  ${{ steps.root_directory.outputs.name }}
      
       # zipar as libs
       - run: ls venv/lib
       - run: cd venv/lib/python3.9/site-packages
-      - run: zip -r9 function.zip
+      - run: zip -r9 ${{ steps.root_directory.outputs.name }}/function.zip
       
       
       # zipar server.app
       # mandar o zip para o s3
-      
-      - name: Run a one-line script
-        run: echo Hello, world!
+
 
