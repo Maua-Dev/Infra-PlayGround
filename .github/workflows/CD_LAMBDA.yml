@@ -20,7 +20,12 @@ jobs:
       - run: python -m venv venv
       - run: source venv/bin/activate 
       - run: pip install -r requirements.txt
-      - run: pwd
+      
+      - name: Pegar root directory
+        id: root_directory
+        run: echo "::set-output name=name::$(pwd)"
+     
+      - run: echo ${{ steps.root_directory.outputs.name }}
      
       # zipar as libs
       - run: ls venv/lib
