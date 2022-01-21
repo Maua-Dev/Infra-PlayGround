@@ -46,7 +46,7 @@ jobs:
           aws-region: sa-east-1
     
       - name: Upload no bucket
-        run: aws s3 cp function.zip s3://devmaua-lambda-functions/${{ github.event.repository.name }}
+        run: aws s3 cp function.zip s3://devmaua-lambda-functions/${{ github.event.repository.name }}/function.zip
 
 
 
