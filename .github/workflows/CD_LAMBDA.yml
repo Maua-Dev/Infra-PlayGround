@@ -44,7 +44,7 @@ jobs:
           # Artifact name
           name: function.zip
           # A file, directory or wildcard pattern that describes what to upload
-#           path: 
+          path: ${{ steps.root_directory.outputs.name }}
           # The desired behavior if no files are found using the provided path.
 
       
