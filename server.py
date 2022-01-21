@@ -4,11 +4,11 @@ from mangum import Mangum
 app = FastAPI()
 
 
-@app.get("/")
+@app.get("/infra-playground")
 async def root():
     return {"message": "Hello World!!"}
 
-@app.get("/erro")
+@app.get("/infra-playground/erro")
 async def root():
     raise HTTPException(status_code=400, detail="Erro!")
 
