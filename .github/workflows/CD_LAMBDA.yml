@@ -32,7 +32,7 @@ jobs:
       - run: cp -R venv/lib/python3.9/site-packages/. toZip
      
       - name: Zip app
-        run: zip -r function.zip venv/lib/python3.9/site-packages/.
+        run: zip -r function.zip toZip
           
       - run: ls
       - run: ls venv/lib/python3.9/site-packages
