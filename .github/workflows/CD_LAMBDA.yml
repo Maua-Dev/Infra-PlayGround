@@ -17,36 +17,28 @@ jobs:
           python-version: 3.9.6
       
       # configurar venv
-      - run: python -m venv venv
-      - run: |
+      - name: Create Virtual Enviroment
+        run: python -m venv venv
+      - name: Install Dependencies
+        run: |
           source venv/bin/activate; \
           pip install -r requirements.txt \
       
-      - name: Pegar root directory
-        id: root_directory
-        run: echo "::set-output name=name::$(pwd)"
-     # ROOT:  ${{ steps.root_directory.outputs.name }}
-     
-     # jogar o server.py nas libs (para zipar tudo junto)
-      - run: cp -R server.py venv/lib/python3.9/site-packages
-      - run:  | 
+      - name: Zip the app
+        run:  | 
+          cp -R server.py venv/lib/python3.9/site-packages; \
           cd venv/lib/python3.9/site-packages; \
           zip -r function.zip *; 
           mv function.zip  ${{ steps.root_directory.outputs.name }}\
           
-      - run: ls
-      - run: ls venv/lib
-      - run: ls venv/lib/python3.9/site-packages
-      
-          
-      - name: "Configure AWS Credentials"
+      - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: sa-east-1
     
-      - name: Upload no bucket
+      - name: Upload zip on S3 Bucket
         run: aws s3 cp function.zip s3://devmaua-lambda-functions/${{ github.event.repository.name }}/function.zip
 
 
