@@ -42,6 +42,9 @@ jobs:
           directory: venv/lib/python3.9/site-packages
 #           exclusions: # optional
           
+      - run: ls
+      - run: ls venv/lib/python3.9/site-packages
+      
           
       - name: "Configure AWS Credentials"
         uses: aws-actions/configure-aws-credentials@v1
