@@ -29,22 +29,22 @@ jobs:
      # jogar o server.py nas libs (para zipar tudo junto)
       - run: cp -R server.py venv/lib/python3.9/site-packages
      
-      # zipar as libs
-      - name: action-zip
-      # You may pin to the exact commit or the version.
-        uses: montudor/action-zip@v1.0.0
-        with:
-        # See montudor/action-zip README.md for more info
-          args: zip -qq -r function.zip venv/lib/python3.9/site-packages
+#       # zipar as libs
+#       - name: action-zip
+#       # You may pin to the exact commit or the version.
+#         uses: montudor/action-zip@v1.0.0
+#         with:
+#         # See montudor/action-zip README.md for more info
+#           args: zip -qq -r function.zip venv/lib/python3.9/site-packages
           
           
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.3.1
         with:
           # Artifact name
-          name: function.zip
+          name: function
           # A file, directory or wildcard pattern that describes what to upload
-          path: ${{ steps.root_directory.outputs.name }}
+          path: venv/lib/python3.9/site-packages
           # The desired behavior if no files are found using the provided path.
 
       
