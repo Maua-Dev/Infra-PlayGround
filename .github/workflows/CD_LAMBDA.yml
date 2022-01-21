@@ -28,15 +28,14 @@ jobs:
      
      # jogar o server.py nas libs (para zipar tudo junto)
       - run: cp -R server.py venv/lib/python3.9/site-packages
-      - run: mkdir toZip
-      - run: cp -R venv/lib/python3.9/site-packages/. toZip
-     
+      - run: cd venv/lib/python3.9/site-packages
+      
       - name: Zip app
-        run: zip -r function.zip toZip
+        run: zip -r function.zip *
+      - run: mc function.zip ${{ steps.root_directory.outputs.name }}
           
       - run: ls
       - run: ls venv/lib/python3.9/site-packages
-      - run: ls toZip
       
           
       - name: "Configure AWS Credentials"
