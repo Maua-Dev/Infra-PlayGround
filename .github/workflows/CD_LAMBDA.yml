@@ -29,13 +29,18 @@ jobs:
      # jogar o server.py nas libs (para zipar tudo junto)
       - run: cp -R server.py venv/lib/python3.9/site-packages
      
-      # zipar as libs
-      - name: action-zip
-      # You may pin to the exact commit or the version.
-        uses: montudor/action-zip@v1.0.0
+      - name: Zip app
+        # You may pin to the exact commit or the version.
+        # uses: TheDoctor0/zip-release@591e9b128012d3328db6043d0d0266c3ac27f9b5
+        uses: TheDoctor0/zip-release@0.6.1
         with:
-        # See montudor/action-zip README.md for more info
-          args: zip -qq -r function.zip venv/lib/python3.9/site-packages
+          # Filename for archive
+          filename: function.zip
+          # Base path for archive files
+          path:  ${{ steps.root_directory.outputs.name }}
+          # Working directory before zipping
+          directory: venv/lib/python3.9/site-packages
+#           exclusions: # optional
           
           
       - name: "Configure AWS Credentials"
@@ -49,26 +54,5 @@ jobs:
         run: aws s3 cp function.zip s3://devmaua-lambda-functions/${{ github.event.repository.name }}/function.zip
 
 
-
-
-#       - name: Upload S3
-#         # You may pin to the exact commit or the version.
-#         # uses: shallwefootball/upload-s3-action@bcd7c2408245fd6cd19b5512a473b1a7a8b48a35
-#         uses: shallwefootball/upload-s3-action@v1.1.3
-#         with:
-#           # aws key id
-#           aws_key_id:  ${{ secrets.AWS_ACCESS_KEY_ID }}
-#           # aws secret access key
-#           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#           # aws bucket name
-#           aws_bucket: devmaua-lambda-functions
-#           # directory to upload
-#           source_dir: function.zip
-#           # destination directory for upload
-#           destination_dir: /${{ github.event.repository.name }}
-      
-      
-      # zipar server.app
-      # mandar o zip para o s3
 
 
