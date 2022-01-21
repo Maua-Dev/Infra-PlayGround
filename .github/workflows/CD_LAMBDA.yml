@@ -48,7 +48,7 @@ jobs:
 
       
     # Atualizar lambda
-      - run: aws lambda update-function-code --function-name infra-playground s3-bucket devmaua-lambda-functions --s3-key ${{ github.event.repository.name }}/function.zip
+      - run: aws lambda update-function-code --function-name infra-playground --s3-bucket devmaua-lambda-functions --s3-key ${{ github.event.repository.name }}/function.zip
       
 
 
