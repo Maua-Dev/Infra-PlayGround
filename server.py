@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from mangum import Mangum
 
-app = FastAPI()
+app = FastAPI(root_path="/dev/")
 
 
 @app.get("/")
