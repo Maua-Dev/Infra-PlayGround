@@ -6,7 +6,7 @@ app = FastAPI(root_path="/dev/infra-playground")
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World!!"}
+    return {"message": "Hello World!!!!"}
 
 @app.get("/erro")
 async def root():
